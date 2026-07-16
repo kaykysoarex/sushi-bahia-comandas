@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sushi Bahia — Painel de pedidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-seal"><span>寿</span></div>
+    <div class="brand-text">
+      <h1>Sushi <em>Bahia</em></h1>
+      <p>Painel de pedidos</p>
+    </div>
+  </div>
+  <div>
+    <div class="role-switch">
+      <button class="role-btn active" data-role="garcom" onclick="mudarView('garcom')">Garçom</button>
+      <button class="role-btn" data-role="cozinha" onclick="mudarView('cozinha')">Cozinha</button>
+    </div>
+    <p class="role-note">demo sem login — no projeto real cada função entra com sua própria conta</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ VISÃO GARÇOM ============ -->
+  <section id="view-garcom" class="view active">
+    <h2 class="section-title">Mesas</h2>
+    <p class="section-sub">Toque numa mesa para montar o pedido</p>
+    <div class="mesas-grid" id="mesasGrid"></div>
+
+    <div id="pedidoBuilder" style="display:none;">
+      <h2 class="section-title" id="mesaAtivaTitulo">Mesa</h2>
+      <p class="section-sub">Adicione os itens do pedido</p>
+      <div class="pedido-builder">
+        <div id="cardapioContainer"></div>
+        <div class="comanda">
+          <div class="comanda-header">
+            <h3>Comanda</h3>
+            <span id="comandaMesaLabel" style="font-size:12px;color:var(--text-muted);"></span>
+          </div>
+          <div id="comandaLista"><p class="comanda-empty">Nenhum item adicionado ainda</p></div>
+          <div class="comanda-total">
+            <span>Total</span>
+            <span id="comandaTotal">R$ 0,00</span>
+          </div>
+          <button class="btn-enviar" id="btnEnviar" disabled onclick="enviarPedido()">Enviar para a cozinha</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISÃO COZINHA ============ -->
+  <section id="view-cozinha" class="view">
+    <h2 class="section-title">Pedidos em preparo</h2>
+    <p class="section-sub">Atualiza sozinho assim que o garçom envia um pedido</p>
+    <div id="pedidosGrid" class="pedidos-grid"></div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
